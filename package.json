@@ -1,0 +1,29 @@
+{
+  "name": "wanikani-assistant",
+  "version": "0.0.1",
+  "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigguest/wanikani-assistant.git"
+  },
+  "keywords": [
+    "WaniKani",
+    "Japanese",
+    "Notifier",
+    "Assistant",
+    "Review",
+    "Lesson"
+  ],
+  "author": "Craig Guest <craigguest@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/craigguest/wanikani-assistant/issues"
+  },
+  "homepage": "https://github.com/craigguest/wanikani-assistant#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}
