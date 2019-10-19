@@ -1,3 +1,8 @@
+# Output from building the extension
+dist
+extension/scripts
+extension/lib
+
 # Logs
 logs
 *.log

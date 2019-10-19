@@ -2,8 +2,10 @@
   "name": "wanikani-assistant",
   "version": "0.0.1",
   "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
+    "start": "webpack --mode development && web-ext run -s ./extension/ -u about:debugging#/runtime/this-firefox -v",
+    "package": "webpack --mode production && web-ext build -a ./dist/ -s ./extension/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +26,10 @@
     "url": "https://github.com/craigguest/wanikani-assistant/issues"
   },
   "homepage": "https://github.com/craigguest/wanikani-assistant#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "web-ext": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
   "dependencies": {}
 }
