@@ -1,6 +1,9 @@
 name: Node.js Extension Build (Firefox)
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   package:
