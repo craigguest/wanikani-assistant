@@ -1,5 +1,7 @@
 # WaniKani Assistant
 
+[![Actions Status](https://github.com/craigguest/wanikani-assistant/workflows/Node.js%20Extension%20Build%20(Firefox)/badge.svg)](https://github.com/craigguest/wanikani-assistant/actions)
+
 WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.
 
 # Getting Started
