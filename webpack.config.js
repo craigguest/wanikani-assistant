@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    devtool: false,
     entry: {
         background: './src/background.js'
     },
