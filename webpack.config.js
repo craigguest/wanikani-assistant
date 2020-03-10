@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
     devtool: false,
     entry: {
-        background: './src/background.js'
+        "background": './src/background.js',
+        "options": './src/options.js',
     },
     output: {
         filename: '[name].js',

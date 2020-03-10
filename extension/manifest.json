@@ -6,6 +6,14 @@
     "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
     "homepage_url": "https://github.com/craigguest/wanikani-assistant",
 
+    "permissions": [
+        "storage"
+    ],
+
+    "options_ui": {
+        "page": "./pages/options.html"
+    },
+
     "background": {
         "page": "pages/background.html"
     },
