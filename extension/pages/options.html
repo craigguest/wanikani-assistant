@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="../styles/options.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <form>
+        <section>
+            <div>
+                <label for="access-token" class="header">Personal Access Token</label>
+                <p>Supply a personal access token from the WaniKani website.</p>
+                <input type="text" id="access-token" name="access-token" maxlength="36" style="width: 20em"
+                    placeholder="00000000-0000-0000-0000-000000000000"
+                    pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                    required />
+            </div>
+        </section>
+
+        <footer>
+            <p id="feedback" class="hidden"></p>
+            <button id="confirm" type="submit">Confirm</button>
+        </footer>
+    </form>
+
+</body>
+
+</html>

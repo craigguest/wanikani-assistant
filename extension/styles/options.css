@@ -1,0 +1,60 @@
+/* general */
+
+.hidden {
+    display: none;
+}
+
+/* layout */
+
+body {
+    font-family: 'system-ui', sans-serif;
+    font-size: 14px;
+}
+
+p {
+    margin: 0;
+}
+
+footer {
+    margin-top: 0.5em;
+}
+
+/* dark theme */
+
+@media (prefers-color-scheme: dark) { 
+    body { background-color: rgb(51, 51, 51); color: #A7A7A7; }
+    header, label { color: #FFFFFF; display: block; }
+    button { background-color: #4D4D4D; }
+}
+
+/* form */
+
+label {
+    padding-bottom: 0.4em;
+    font-weight: bold;
+}
+
+section, section p {
+    padding-bottom: 0.6em;
+}
+
+button {
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    font-family: Arial;
+}
+
+/* feedback */
+
+#feedback {
+    padding-bottom: 1.2em;
+    margin: 0;
+}
+
+.valid {
+    color: #DDFFDD;
+    display: block;
+}
