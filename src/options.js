@@ -23,11 +23,11 @@ class Options {
 
         // Retrieve options from page elements
         const accessToken = document.querySelector('#access-token');
-        const options = { key: accessToken.value };
-        console.debug('[saveOptions] Attempting to save new options.', options);
+        const storage = { key: accessToken.value };
+        console.debug('[saveOptions] Attempting to save new options.', storage);
 
         // Save options
-        await browser.storage.sync.set(options);
+        await browser.storage.sync.set(storage);
         this.showFeedback('Personal access token saved.', 'valid');
         console.debug('[saveOptions] Options saved sucessfully.');
     }
@@ -36,8 +36,8 @@ class Options {
      * Load previously selected options from the storage and populate the page.
      */
     async restoreOptions() {
-        const options = await browser.storage.sync.get(['key']);
-        document.querySelector('#access-token').value = options.key || '';
+        const storage = await browser.storage.sync.get(['key']);
+        document.querySelector('#access-token').value = storage.key || '';
     }
 
     /**
