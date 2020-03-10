@@ -1,4 +1,10 @@
 /**
+ * @overview File runs in the background for the extension.
+ */
+
+var browser = require("webextension-polyfill");
+
+/**
  * Handle events fired when using the extension (i.e. badge, alarms, notifications ).
  * @class
  */
