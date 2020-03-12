@@ -1,12 +1,12 @@
 {
   "name": "wanikani-assistant",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
   "private": true,
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack --mode development && web-ext run -s ./extension/ -u about:debugging#/runtime/this-firefox -v",
-    "package": "webpack --mode production && web-ext build -a ./dist/ -s ./extension/",
+    "package": "webpack --mode production && web-ext build -a ./dist/ -s ./extension/ --api-key $FFWE_API_KEY --api-secret $FFWE_API_SECRET",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
