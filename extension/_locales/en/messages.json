@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "WaniKani Assistant",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
+        "description": "Description of the extension."
+    }
+}
