@@ -1,6 +1,6 @@
 {
   "name": "wanikani-assistant",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
   "private": true,
   "scripts": {
