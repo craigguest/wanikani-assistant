@@ -36,9 +36,21 @@ class Background {
             return;
         }
 
-        await browser.tabs.create({
-            url: `${WANIKANI_URL}/dashboard`
-        });
+        // Launch the review page if any are outstanding, lessons if they are oustanding, otherwise head to the dashboard
+        try {
+            let url = WANIKANI_URL;
+            if (response.reviews > 0) {
+                url += '/review';
+            } else if (response.lessons > 0) {
+                url += '/lesson';
+            } else {
+                url += '/dashboard';
+            }
+            const create = {url: url};
+            await browser.tabs.create(create);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
     }
 
     /**
