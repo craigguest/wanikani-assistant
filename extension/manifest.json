@@ -1,9 +1,8 @@
 {
     "manifest_version": 2,
+    "default_locale": "en",
 
-    "name": "WaniKani Assistant",
-    "version": "0.0.3",
-    "description": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
+    "version": "0.0.5",
     "homepage_url": "https://github.com/craigguest/wanikani-assistant",
 
     "permissions": [
@@ -19,12 +18,16 @@
     },
 
     "browser_action": {
-        "browser_style": true,
-        "default_icon": "images/logo.svg"
+        "default_icon": {
+            "16": "images/icon16.png",
+            "24": "images/icon24.png",
+            "32": "images/icon32.png"
+        }
     },
 
     "icons": {
-        "48": "images/logo.svg",
-        "96": "images/logo.svg"
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
     }
 }
