@@ -15,12 +15,16 @@ class Background {
     constructor() {
         browser.alarms.create('refresh-data', { periodInMinutes: 1 });
 
-        document.addEventListener('DOMContentLoaded', this.refreshBadge);
+        document.addEventListener('DOMContentLoaded', this.refreshReviews);
+        browser.runtime.onInstalled.addListener(browser.runtime.openOptionsPage);
 
-        browser.alarms.onAlarm.addListener(this.refreshBadge);
+        browser.alarms.onAlarm.addListener(this.refreshReviews);
         browser.browserAction.onClicked.addListener(this.openWebsite);
     }
 
+    /**
+     * Opens a new browser to the options/reviews/dashbord depending on the number of outstanding reviews.
+     */
     async openWebsite() {
         const storage = await browser.storage.sync.get(['key']);//, 'reviews', 'lessons']);
 
@@ -35,7 +39,10 @@ class Background {
         });
     }
 
-    async refreshBadge() {
+    /**
+     * Retrieves the reviews from WaniKani and displays the number of oustanding reviews as an extension badge.
+     */
+    async refreshReviews() {
         const storage = await browser.storage.sync.get(['key']);//, 'reviews', 'lessons']);
 
         if (!storage.key) {
@@ -44,7 +51,20 @@ class Background {
         }
 
         updateBadge('', '', BADGE_COLORS.neutral);
+        try {
+            const response = (await api.fetchSummary(storage.key));
+
+            const data = {
+                reviews: response.reviews[0].subject_ids.length,
+                lessons: response.lessons[0].subject_ids.length
+            };
+            console.debug('[refreshReviews] Response parsed:', data);
+
+        } catch (error) {
+            console.error('[refreshReviews] ', error);
+        }
     }
+
 }
 
 /**
