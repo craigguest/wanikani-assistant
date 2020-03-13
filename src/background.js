@@ -2,6 +2,7 @@
  * @overview File runs in the background for the extension.
  */
 
+import { BADGE_COLORS, updateBadge } from './modules';
 var browser = require("webextension-polyfill");
 
 const WANIKANI_URL = 'https://www.wanikani.com';
@@ -12,6 +13,11 @@ const WANIKANI_URL = 'https://www.wanikani.com';
 class Background {
 
     constructor() {
+        browser.alarms.create('refresh-data', { periodInMinutes: 1 });
+
+        document.addEventListener('DOMContentLoaded', this.refreshBadge);
+
+        browser.alarms.onAlarm.addListener(this.refreshBadge);
         browser.browserAction.onClicked.addListener(this.openWebsite);
     }
 
@@ -29,6 +35,16 @@ class Background {
         });
     }
 
+    async refreshBadge() {
+        const storage = await browser.storage.sync.get(['key']);//, 'reviews', 'lessons']);
+
+        if (!storage.key) {
+            updateBadge(browser.i18n.getMessage('badgeTextNoAccessToken'), '!', BADGE_COLORS.danger);
+            return;
+        }
+
+        updateBadge('', '', BADGE_COLORS.neutral);
+    }
 }
 
 /**

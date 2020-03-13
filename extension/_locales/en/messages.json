@@ -6,5 +6,9 @@
     "extensionDescription": {
         "message": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
         "description": "Description of the extension."
+    },
+    "badgeTextNoAccessToken": {
+        "message": "Click to enter your WaniKani API Key.",
+        "description": "Badge text to display before a user has set their access token."
     }
 }
