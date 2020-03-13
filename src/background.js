@@ -2,7 +2,7 @@
  * @overview File runs in the background for the extension.
  */
 
-import { BADGE_COLORS, updateBadge } from './modules';
+import { BADGE_COLORS, api, updateBadge } from './modules';
 var browser = require("webextension-polyfill");
 
 const WANIKANI_URL = 'https://www.wanikani.com';
