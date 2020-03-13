@@ -4,6 +4,7 @@
 
 var browser = require("webextension-polyfill");
 
+const WANIKANI_URL = 'https://www.wanikani.com';
 /**
  * Handle events fired when using the extension (i.e. badge, alarms, notifications ).
  * @class
@@ -15,8 +16,16 @@ class Background {
     }
 
     async openWebsite() {
+        const storage = await browser.storage.sync.get(['key']);//, 'reviews', 'lessons']);
+
+        // Launch the options page if no access token has been entered yet
+        if (!storage.key) {
+            browser.runtime.openOptionsPage();
+            return;
+        }
+
         await browser.tabs.create({
-            url: 'https://www.wanikani.com/dashboard'
+            url: `${WANIKANI_URL}/dashboard`
         });
     }
 
