@@ -10,5 +10,20 @@
     "badgeTextNoAccessToken": {
         "message": "Click to enter your WaniKani API Key.",
         "description": "Badge text to display before a user has set their access token."
+    },
+    "badgeTextStudyAvailable": {
+        "message": "You have $REVIEWS$ reviews and $LESSONS$ lessons. Click to launch your $LAUNCH$.",
+        "description": "Badge text to display when a user has reviews or lessons available.",
+        "placeholders": {
+            "reviews": {
+                "content": "$1"
+            },
+            "lessons": {
+                "content": "$2"
+            },
+            "launch": {
+                "content": "$3"
+            }
+        }
     }
 }

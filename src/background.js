@@ -6,6 +6,8 @@ import { BADGE_COLORS, api, updateBadge } from './modules';
 var browser = require("webextension-polyfill");
 
 const WANIKANI_URL = 'https://www.wanikani.com';
+const DATE_FORMAT = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
 /**
  * Handle events fired when using the extension (i.e. badge, alarms, notifications ).
  * @class
@@ -43,23 +45,39 @@ class Background {
      * Retrieves the reviews from WaniKani and displays the number of oustanding reviews as an extension badge.
      */
     async refreshReviews() {
-        const storage = await browser.storage.sync.get(['key']);//, 'reviews', 'lessons']);
+        const storage = await browser.storage.sync.get(['key']);
+        console.debug('[refreshReviews] Storage polled:', storage);
 
         if (!storage.key) {
+            console.debug('[refreshReviews] No API key found in storage.');
             updateBadge(browser.i18n.getMessage('badgeTextNoAccessToken'), '!', BADGE_COLORS.danger);
             return;
         }
 
-        updateBadge('', '', BADGE_COLORS.neutral);
         try {
-            const response = (await api.fetchSummary(storage.key));
+            const response = await api.fetchSummary(storage.key);
 
             const data = {
                 reviews: response.reviews[0].subject_ids.length,
                 lessons: response.lessons[0].subject_ids.length
             };
+
             console.debug('[refreshReviews] Response parsed:', data);
 
+            if (data.reviews > 0 || data.lessons > 0) {
+                const title = browser.i18n.getMessage('badgeTextStudyAvailable', [
+                    data.reviews,
+                    data.lessons,
+                    data.reviews > 0 ? 'reviews' : 'lessons'
+                ]);
+                updateBadge(title, (data.reviews + data.lessons).toString(), BADGE_COLORS.warning);
+            } else {
+                const nextReview = new Date(response.next_reviews_at);
+                updateBadge(`You next review is at ${nextReview.toLocaleTimeString()} on ${nextReview.toLocaleDateString(DATE_FORMAT)}.`, data.reviews.toString());
+            }
+
+            await browser.storage.sync.set(data);
+            console.debug('[refreshReviews] Updated local storage:', data);
         } catch (error) {
             console.error('[refreshReviews] ', error);
         }
