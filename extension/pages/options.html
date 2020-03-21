@@ -18,6 +18,17 @@
                     placeholder="00000000-0000-0000-0000-000000000000"
                     pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
                     required />
+                <a href="https://www.wanikani.com/settings/personal_access_tokens"
+                    class="localize" data-localize="findAccessToken">Find your access token.</a>
+            </div>
+            <div class="browser-style">
+                <label class="localize" data-localize="notifications">Notifications:</label>
+
+                <input type="radio" id="enable-notifications" name="notifications" value="enable-notifications" />
+                <label for="enable-notifications" class="localize" data-localize="enabled">Enabled</label>
+
+                <input type="radio" id="disable-notifications" name="notifications" value="disable-notifications" />
+                <label for="disable-notifications" class="localize" data-localize="disabled">Disabled</label>
             </div>
         </section>
 

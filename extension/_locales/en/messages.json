@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "extensionDescription": {
-        "message": "WaniKani Assistant, a lightweight extension for Firefox featuring lesson and review notifications.",
+        "message": "WaniKani Assistant will notify you when you have a new review available and display the number review items you have oustanding.",
         "description": "Description of the extension."
     },
     "badgeTextNoAccessToken": {
@@ -25,5 +25,17 @@
                 "content": "$3"
             }
         }
+    },
+    "enabled": {
+        "message": "Enabled"
+    },
+    "disabled": {
+        "message": "Disabled"
+    },
+    "findAccessToken": {
+        "message": "Find your access token."
+    },
+    "notifcations": {
+        "message": "Notifications:"
     }
 }

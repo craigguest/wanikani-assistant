@@ -23,7 +23,10 @@ class Options {
 
         // Retrieve options from page elements
         const accessToken = document.querySelector('#access-token');
-        const storage = { key: accessToken.value };
+        const storage = {
+            key: accessToken.value,
+            notifications: document.querySelector('input[name="notifications"]:checked').value
+        };
         console.debug('[saveOptions] Attempting to save new options.', storage);
 
         // Save options
@@ -36,8 +39,9 @@ class Options {
      * Load previously selected options from the storage and populate the page.
      */
     async restoreOptions() {
-        const storage = await browser.storage.sync.get(['key']);
+        const storage = await browser.storage.sync.get(['key','notifications']);
         document.querySelector('#access-token').value = storage.key || '';
+        document.querySelector(`#${storage.notifications || 'disable-notifications'}`).checked = true;
     }
 
     /**
