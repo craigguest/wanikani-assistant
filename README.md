@@ -24,6 +24,12 @@ You can build the source in development and launch Firefox by running:
 npm start
 ```
 
+You can run the experimental Chrome instance of the extension by running:
+
+```powershell
+npm start-chrome
+```
+
 # Contributing
 
 Check the issue tracker for any issues labelled [help wanted](https://github.com/craigguest/wanikani-assistant/labels/help%20wanted).
