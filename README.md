@@ -24,6 +24,15 @@ You can build the source in development and launch Firefox by running:
 npm start
 ```
 
+# Deployment
+
+You can use `npm run build` to generate a xpi file for local deployment, this will contain the signed distributable extension.
+
+The following environment variables must be set on the machine you're running the command from:
+
+* `FFWE_API_KEY`: Your JWT issuer token, for the addons API.
+* `FFWE_API_SECRET`: Your JWT secret, for the addons API.
+
 # Contributing
 
 Check the issue tracker for any issues labelled [help wanted](https://github.com/craigguest/wanikani-assistant/labels/help%20wanted).

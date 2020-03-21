@@ -1,0 +1,21 @@
+name: Node.js Extension Build
+
+on: [push]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm install
+    - run: npm run package
+      env:
+        FFWE_API_KEY: ${{ secrets.FFWE_API_KEY }}
+        FFWE_API_SECRET: ${{ secrets.FFWE_API_SECRET }}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: extension
+        path: dist
